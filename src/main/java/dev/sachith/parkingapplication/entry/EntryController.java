@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 class EntryController {
 
     private final EntryService entryService;
+    private final ExitService exitService;
 
-    public EntryController(EntryService entryService) {
+    public EntryController(EntryService entryService, ExitService exitService) {
         this.entryService = entryService;
+        this.exitService = exitService;
     }
-    // private ExitService exitService;
 
     @PostMapping("/entry")
     public ResponseEntity<String> entry(@RequestParam String vehicleNumber) {
@@ -26,7 +27,7 @@ class EntryController {
 
     @PostMapping("/exit")
     public ResponseEntity<String> exit(@RequestParam String vehicleNumber) {
-        //  exitService.vehicleExit(vehicleNumber);
+        exitService.vehicleExit(vehicleNumber);
         return ResponseEntity.ok("Vehicle exited: " + vehicleNumber);
     }
 }

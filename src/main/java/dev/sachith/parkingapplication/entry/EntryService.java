@@ -22,7 +22,6 @@ public class EntryService {
         this.publisher = publisher;
     }
 
-
     public void vehicleEntry(String vehicleNumber) {
         ParkingEntry parkingEntry = new ParkingEntry(null, vehicleNumber, LocalDateTime.now(), null, true);
         repository.save(parkingEntry);
